@@ -5,7 +5,7 @@ using System.Collections;
 public class MainBehavior : MonoBehaviour {
 
 	bool chase = false;
-	public int delay = 90;
+	public int delay = 10;
 	// Use this for initialization
 	void Start () {
 		if (delay > SceneManagerScript.historySize-1) {
@@ -22,6 +22,14 @@ public class MainBehavior : MonoBehaviour {
 			int delayedPos = SceneManagerScript.historyPointer - delay;
 			if (delayedPos < 0) delayedPos += SceneManagerScript.historySize;
 			transform.position = SceneManagerScript.positionHistory[delayedPos];
+		}
+	}
+
+	void OnCollisionEnter (Collision col)
+	{
+		if(col.gameObject.tag == "CHECKPOINT" )
+		{
+			Destroy(col.gameObject);
 		}
 	}
 }
