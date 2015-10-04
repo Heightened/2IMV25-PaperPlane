@@ -5,7 +5,7 @@ using System.Collections;
 public class MainBehavior : MonoBehaviour {
 
 	bool chase = false;
-	private int delay = 90;
+	public int delay = 90;
 	// Use this for initialization
 	void Start () {
 		if (delay > SceneManagerScript.historySize-1) {
