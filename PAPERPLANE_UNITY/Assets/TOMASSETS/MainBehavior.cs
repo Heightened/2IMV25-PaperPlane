@@ -29,7 +29,11 @@ public class MainBehavior : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "CHECKPOINT" )
 		{
-			Destroy(col.gameObject);
+			RotateScript rotateS = col.gameObject.GetComponent<RotateScript> ();
+			if (rotateS.checkpointNumber == SceneManagerScript.checkpointStatus){
+				Destroy(col.gameObject);
+				SceneManagerScript.checkpointStatus++;
+			}
 		}
 	}
 }
