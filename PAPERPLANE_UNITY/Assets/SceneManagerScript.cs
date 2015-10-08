@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Leap;
 
 
 public class SceneManagerScript : MonoBehaviour {
@@ -18,7 +19,13 @@ public class SceneManagerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = LeapRay.pointer;
+        //HandModel hand = GetComponent<HandModel>();
+        //Ray ray = new Ray(hand.GetPalmPosition(), hand.GetPalmDirection());
+        //Ray ray = hand.fingers[1].GetRay();
+        Ray ray = LeapPointer.ray;
+
 		float distance = 0f;
 		if (tracePlane.Raycast (ray, out distance)) {
 			planePosition = ray.GetPoint (distance);
