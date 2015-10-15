@@ -5,12 +5,9 @@ using System.Collections;
 public class MainBehavior : MonoBehaviour {
 
 	bool chase = false;
-	public int delay = 10;
 	// Use this for initialization
 	void Start () {
-		if (delay > SceneManagerScript.historySize-1) {
-			//crap
-		}
+
 	}
 	
 	// Update is called once per frame
@@ -19,7 +16,7 @@ public class MainBehavior : MonoBehaviour {
 			Vector3 diff = SceneManagerScript.planePosition - transform.position;
 			transform.position += diff / 5;
 		} else {
-			int delayedPos = SceneManagerScript.historyPointer - delay;
+			int delayedPos = SceneManagerScript.historyPointer - SceneManagerScript.INPUT_DELAY;
 			if (delayedPos < 0) delayedPos += SceneManagerScript.historySize;
 			transform.position = SceneManagerScript.positionHistory[delayedPos];
 		}
@@ -32,7 +29,7 @@ public class MainBehavior : MonoBehaviour {
 			RotateScript rotateS = col.gameObject.GetComponent<RotateScript> ();
 			if (rotateS.checkpointNumber == SceneManagerScript.checkpointStatus){
 				Destroy(col.gameObject);
-				SceneManagerScript.checkpointStatus++;
+				SceneManagerScript.increaseCheckPointCount();
 			}
 		}
 	}
