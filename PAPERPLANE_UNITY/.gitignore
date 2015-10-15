@@ -1,0 +1,9 @@
+[Aa]ssets/Gizmos/
+[Aa]ssets/LeapMotion/
+[Aa]ssets/LeapMotionVR/
+[Aa]ssets/OVR/
+[Aa]ssets/Plugins/
+
+*.unitypackage
+
+Assets.zip
